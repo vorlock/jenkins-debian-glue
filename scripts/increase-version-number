@@ -31,6 +31,6 @@ fi
 # $snapshot_version will be older than $existing_old_version
 # until it's 1.2.4, 1.3, etc.
 
-echo "${1}+0"
+echo "${1}"
 
 # vim:foldmethod=marker ts=2 ft=sh ai expandtab sw=2

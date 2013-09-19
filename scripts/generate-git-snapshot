@@ -57,7 +57,7 @@ version_information() {
   DISTRIBUTION=$(dpkg-parsechangelog --count 1 | awk '/^Distribution/ {print $2}')
 
   # we want to get a version string like
-  # $ORIG_VERSION+0~$TIMESTAMP.$BUILD_NUMBER~1.$GIT_ID
+  # $ORIG_VERSION.$TIMESTAMP.$BUILD_NUMBER~1.$GIT_ID
   # so the version is always increasing over time, no matter what
   TIMESTAMP="$(date -u +%Y%m%d%H%M%S)"
   BUILD_VERSION="${TIMESTAMP}.${BUILD_NUMBER}" # git-dch appends something like ~1.gbp5f433e then
@@ -71,7 +71,7 @@ version_information() {
     APPLY_VERSION_WORKAROUND=true
   fi
 
-  VERSION_STRING="${INCREASED_VERSION}~${BUILD_VERSION}"
+  VERSION_STRING="${INCREASED_VERSION}.${BUILD_VERSION}"
 
   if [ -n "${distribution:-}" ] ; then
     echo "Distribution variable found. Adding distribution specific version."
